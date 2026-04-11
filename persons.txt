@@ -1,0 +1,10 @@
+Ivan 10 London
+Ivan 16 Moscow
+Leo 22 Berlin
+Olga 15 Paris
+Sofia 26 Moscow
+Sofia 36 Berlin
+Ivan 48 Berlin
+Anna 47 Rome
+Maria 42 Madrid
+Ivan 49 Berlin
