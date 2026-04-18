@@ -1,8 +1,11 @@
 package files;
 
 import People.Person;
+import People.PersonGenerator;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -38,7 +41,17 @@ public class CustomerAccess {
             }
         }
 
-        //TODO добавить пользователей в файл
+        writeFile(people);
+    }
+
+    static void writeFile(List<Person> persons) {
+        try (FileWriter writer = new FileWriter("src/files/people.txt")) {
+            for (Person p : persons) {
+                writer.write(p.name + " " + p.age + " " + p.city + "\n");
+            }
+        } catch (IOException e) {
+            System.out.println("Произошла файловая ошибка " + e.getMessage());
+        }
     }
 
     static List<Person> readListPeople() {
@@ -62,7 +75,7 @@ public class CustomerAccess {
 
         } catch (Exception e) {
             System.out.println("Произошла ошибка чтения из файла " + e.getMessage());
-            return null;
+            return new ArrayList<>();
         }
     }
 
