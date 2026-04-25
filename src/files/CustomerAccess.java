@@ -1,6 +1,7 @@
 package files;
+
 import People.Person;
-import People.PersonGenerator;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -22,6 +23,7 @@ public class CustomerAccess {
                     Нажмите кнопку, чтобы:
                     1 - Добавить нового пользователя
                     2 - Показать всех пользователей
+                    3 - Найти пользователя по имени
                     5 - выход""");
             System.out.print("Введите команду ");
             int knopka = scanner.nextInt();
@@ -37,13 +39,13 @@ public class CustomerAccess {
                 people.add(person);
             } else if (knopka == 2) {
                 System.out.println("Список пользователей: ");
-
+                printPerson(people);
             } else if (knopka == 3) {
                 System.out.print("Введите имя: ");
                 String name = scanner.next();
-                for (Person p : people)
-                    System.out.println("Имя:" + p.name + " Город:" + p.city);
+                Person user = searchByName(people, name);
 
+                System.out.println("Найден пользователь: " + user);
             } else if (knopka == 5) {
                 System.out.println("До свидания!");
                 break;
@@ -92,5 +94,15 @@ public class CustomerAccess {
         for (Person p : people) {
             System.out.println("Имя:" + p.name + " Город:" + p.city);
         }
+    }
+
+    private static Person searchByName(List<Person> people, String searchName) {
+        for (Person person : people) {
+            if (person.name.equals(searchName)) {
+                return person;
+            }
+        }
+
+        return null;
     }
 }
