@@ -16,6 +16,9 @@ public class CustomerAccess {
         Scanner scanner = new Scanner(System.in);
         List<Person> people = readListPeople();
 
+        /*
+        1. Задание - добавить кнопку 3 - поиска пользователя по имени
+         */
         while (true) {
             System.out.println("""
                     Нажмите кнопку, чтобы:
