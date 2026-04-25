@@ -1,8 +1,6 @@
 package files;
-
 import People.Person;
 import People.PersonGenerator;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -39,7 +37,13 @@ public class CustomerAccess {
                 people.add(person);
             } else if (knopka == 2) {
                 System.out.println("Список пользователей: ");
-                printPerson(people);
+
+            } else if (knopka == 3) {
+                System.out.print("Введите имя: ");
+                String name = scanner.next();
+                for (Person p : people)
+                    System.out.println("Имя:" + p.name + " Город:" + p.city);
+
             } else if (knopka == 5) {
                 System.out.println("До свидания!");
                 break;
