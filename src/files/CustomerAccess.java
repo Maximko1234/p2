@@ -29,8 +29,10 @@ public class CustomerAccess {
                 String name = scanner.next();
                 System.out.print("Введите город пользователя: ");
                 String city = scanner.next();
+                System.out.print("Введите возраст пользователя: ");
+                int age = scanner.nextInt();
 
-                Person person = new Person(name, 15, city);
+                Person person = new Person(name, age, city);
                 people.add(person);
             } else if (knopka == 2) {
                 System.out.println("Список пользователей: ");

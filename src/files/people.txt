@@ -1,2 +1,6 @@
 Alex 18 Madrid
 Maria 20 Berlin
+Denis 15 Rostov
+Stats 15 Krasodar
+Maria 15 Moscow
+Дебаг 25 Казань
