@@ -15,15 +15,14 @@ public class CustomerAccess {
         Scanner scanner = new Scanner(System.in);
         List<Person> people = readListPeople();
 
-        /*
-        1. Задание - добавить кнопку 3 - поиска пользователя по имени
-         */
+
         while (true) {
             System.out.println("""
                     Нажмите кнопку, чтобы:
                     1 - Добавить нового пользователя
                     2 - Показать всех пользователей
                     3 - Найти пользователя по имени
+                    4 - Удалить пользователя по имени  
                     5 - выход""");
             System.out.print("Введите команду ");
             int knopka = scanner.nextInt();
@@ -46,6 +45,15 @@ public class CustomerAccess {
                 Person user = searchByName(people, name);
 
                 System.out.println("Найден пользователь: " + user);
+            } else if (knopka == 4) {
+                System.out.print("Введите имя для удаления: ");
+                String name = scanner.next();
+                boolean deleted = delete(people, name);
+                if (deleted) {
+                    System.out.println("Пользователь удален");
+                } else {
+                    System.out.println("Пользователь не найден");
+                }
             } else if (knopka == 5) {
                 System.out.println("До свидания!");
                 break;
@@ -104,5 +112,16 @@ public class CustomerAccess {
         }
 
         return null;
+    }
+
+
+    private static boolean delete(List<Person> people, String deleteN) {
+        for (int i = 0; i < people.size(); i++) {
+            if (people.get(i).name.equals(deleteN)) {
+                people.remove(i);
+                return true;
+            }
+        }
+        return false;
     }
 }
