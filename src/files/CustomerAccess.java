@@ -23,8 +23,8 @@ public class CustomerAccess {
                     2 - Показать всех пользователей
                     3 - Найти пользователя по имени
                     4 - Удалить пользователя по имени
-                    6 - Вывод пользователей из одного города
-                    5 - выход""");
+                    5 - выход
+                    6 - Вывод пользователей из одного города""");
             System.out.print("Введите команду ");
             int knopka = scanner.nextInt();
             if (knopka == 1) {
@@ -58,6 +58,10 @@ public class CustomerAccess {
             } else if (knopka == 5) {
                 System.out.println("До свидания!");
                 break;
+            } else if (knopka == 6) {
+                System.out.print("Введите город: ");
+                String city = scanner.next();
+                City(people, city);
             }
         }
 
@@ -124,5 +128,19 @@ public class CustomerAccess {
             }
         }
         return false;
+    }
+
+
+    private static void City(List<Person> people, String city) {
+        boolean gorod = false;
+        for (Person p : people) {
+            if (p.city.equals(city)) {
+                System.out.println("Имя:" + p.name + " Возраст:" + p.age);
+                gorod = true;
+            }
+        }
+        if (!gorod) {
+            System.out.println("Пользователи из города " + city + " не найдены");
+        }
     }
 }
