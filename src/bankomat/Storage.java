@@ -49,20 +49,17 @@ public class Storage {
     }
 
     public void save() {
-        System.out.println("Сохранение данных..." + balance);
+        System.out.println("Сохранение данных в файл...");
         try (FileWriter writer = new FileWriter("src/bankomat/storage/balance.txt")) {
             for (var b : balance.entrySet()) {
-                System.out.println("кладем элемент");
                 writer.write(b.getKey() + " " + b.getValue() + "\n");
             }
         } catch (IOException e) {
             System.out.println("Произошла файловая ошибка " + e.getMessage());
         }
 
-        System.out.println("Сохранение данных..." + logins);
         try (FileWriter writer = new FileWriter("src/bankomat/storage/logins.txt")) {
             for (var b : logins.entrySet()) {
-                System.out.println("кладем элемент");
                 writer.write(b.getKey() + " " + b.getValue() + "\n");
             }
         } catch (IOException e) {
