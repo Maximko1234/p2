@@ -146,10 +146,10 @@ public class BankomatApp {
             int summa = Integer.parseInt(input);
             if (summa > 0) {
                 int balance = storage.balance.get(login);
-                int balance2 = storage.balance.get(login);
+                int balance2 = storage.balance.get(komu);
                 if (balance >= summa) {
                     storage.balance.put(login, balance - summa);
-                    storage.balance.put(komu, balance - summa);
+                    storage.balance.put(komu, balance2 + summa);
                 }
                 JOptionPane.showMessageDialog(frame, "успешный перевод.ваш баланс: " + storage.balance.get(login));
             } else {
