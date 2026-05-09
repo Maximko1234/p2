@@ -1,6 +1,10 @@
 package bankomat;
 
+import People.Person;
+
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 public class Storage {
@@ -41,6 +45,28 @@ public class Storage {
             }
         } catch (Exception e) {
             System.out.println("Произошла ошибка чтения из файла " + e.getMessage());
+        }
+    }
+
+    public void save() {
+        System.out.println("Сохранение данных..." + balance);
+        try (FileWriter writer = new FileWriter("src/bankomat/storage/balance.txt")) {
+            for (var b : balance.entrySet()) {
+                System.out.println("кладем элемент");
+                writer.write(b.getKey() + " " + b.getValue() + "\n");
+            }
+        } catch (IOException e) {
+            System.out.println("Произошла файловая ошибка " + e.getMessage());
+        }
+
+        System.out.println("Сохранение данных..." + logins);
+        try (FileWriter writer = new FileWriter("src/bankomat/storage/logins.txt")) {
+            for (var b : logins.entrySet()) {
+                System.out.println("кладем элемент");
+                writer.write(b.getKey() + " " + b.getValue() + "\n");
+            }
+        } catch (IOException e) {
+            System.out.println("Произошла файловая ошибка " + e.getMessage());
         }
     }
 }

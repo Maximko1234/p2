@@ -11,22 +11,22 @@ import static javax.swing.JOptionPane.ERROR_MESSAGE;
 public class BankomatApp {
 
     private JFrame frame;
-    private Storage storage;
+    private Storage storage = new Storage();
     private String login;
 
     public static void main(String[] args) {
         new BankomatApp().showLogin();
     }
+
     //настройка окна
     private void showLogin() {
-        storage = new Storage();
         //Настройки окна
         frame = new JFrame("Банкомат - вход");
         try {
-            Image icon = ImageIO.read(new File( "src\\bankomat\\icon.png"));
+            Image icon = ImageIO.read(new File("src\\bankomat\\icon.png"));
             frame.setIconImage(icon);
-        } catch (IOException e){
-            System.out.println("картинка не найдена"+ e.getMessage());
+        } catch (IOException e) {
+            System.out.println("картинка не найдена" + e.getMessage());
         }
         frame.setSize(400, 200);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -77,7 +77,7 @@ public class BankomatApp {
         JButton BalanceButton = new JButton("Проверить баланс");
         JButton exitButton = new JButton("Выход");
 
-        depositButton.addActionListener(e-> popolnenie());
+        depositButton.addActionListener(e -> popolnenie());
         snyatieButton.addActionListener(e -> snytie());
         BalanceButton.addActionListener(e -> Balance());
         perevodButton.addActionListener(e -> perevod());
@@ -94,29 +94,32 @@ public class BankomatApp {
         frame.revalidate();
         frame.repaint();
     }
-    private void Balance(){
+
+    private void Balance() {
         JOptionPane.showMessageDialog(frame, "баланс: " + storage.balance.get(login));
     }
+
     private void popolnenie() {
-        String input = JOptionPane.showInputDialog(frame,"Beeдите сумму пополнения");
+        String input = JOptionPane.showInputDialog(frame, "Beeдите сумму пополнения");
         try {
             int summa = Integer.parseInt(input);
             if (summa > 0) {
                 System.out.println(login);
                 int balance = storage.balance.get(login);
+                System.out.println("balans:" + balance);
                 storage.balance.put(login, balance + summa);
                 JOptionPane.showMessageDialog(frame, "Счет пополнен. Новый баланс: " + storage.balance.get(login));
             } else {
                 JOptionPane.showMessageDialog(frame, "Неверная сумма!", "ERROR", ERROR_MESSAGE);
             }
-        }catch (NumberFormatException exception) {
-                JOptionPane.showMessageDialog(frame, "Введите корректное число", "Ошибка ввода числа", ERROR_MESSAGE);
+        } catch (NumberFormatException exception) {
+            JOptionPane.showMessageDialog(frame, "Введите корректное число", "Ошибка ввода числа", ERROR_MESSAGE);
 
         }
     }
 
     private void snytie() {
-        String input = JOptionPane.showInputDialog(frame,"Beeдите сумму для снятия");
+        String input = JOptionPane.showInputDialog(frame, "Beeдите сумму для снятия");
         try {
             int summa = Integer.parseInt(input);
             if (summa >= 0) {
@@ -126,16 +129,17 @@ public class BankomatApp {
             } else {
                 JOptionPane.showMessageDialog(frame, "Неверная сумма!", "ERROR", ERROR_MESSAGE);
             }
-        }catch (NumberFormatException exception) {
+        } catch (NumberFormatException exception) {
             JOptionPane.showMessageDialog(frame, "Введите корректное число", "Ошибка ввода числа", ERROR_MESSAGE);
 
         }
     }
+
     private void perevod() {
-        String input = JOptionPane.showInputDialog(frame,"Beeдите сумму для перевода");
-        String komu = JOptionPane.showInputDialog(frame,"Beeдите логин пользователя");
-        if(!storage.logins.containsKey(komu)){
-            JOptionPane.showMessageDialog(frame, "пользователь не найден","ERROR",ERROR_MESSAGE);
+        String input = JOptionPane.showInputDialog(frame, "Beeдите сумму для перевода");
+        String komu = JOptionPane.showInputDialog(frame, "Beeдите логин пользователя");
+        if (!storage.logins.containsKey(komu)) {
+            JOptionPane.showMessageDialog(frame, "пользователь не найден", "ERROR", ERROR_MESSAGE);
             return;
         }
         try {
@@ -143,7 +147,7 @@ public class BankomatApp {
             if (summa > 0) {
                 int balance = storage.balance.get(login);
                 int balance2 = storage.balance.get(login);
-                if (balance >= summa)  {
+                if (balance >= summa) {
                     storage.balance.put(login, balance - summa);
                     storage.balance.put(komu, balance - summa);
                 }
@@ -151,16 +155,17 @@ public class BankomatApp {
             } else {
                 JOptionPane.showMessageDialog(frame, "Неверная сумма!", "ERROR", ERROR_MESSAGE);
             }
-        }catch (NumberFormatException exception) {
+        } catch (NumberFormatException exception) {
             JOptionPane.showMessageDialog(frame, "Введите корректное число", "Ошибка ввода числа", ERROR_MESSAGE);
 
         }
     }
 
-    private void exit(){
-        login ="";
+    private void exit() {
+        login = "";
         frame.dispose();
         showLogin();
+        storage.save();
     }
 
     private void showRegistrationScreen() {
@@ -180,7 +185,7 @@ public class BankomatApp {
         JPasswordField passwordField = new JPasswordField();
 
         JLabel password2Label = new JLabel("Повторите пароль");
-        password2Label.setFont(new Font( "Arial", Font.PLAIN,14));
+        password2Label.setFont(new Font("Arial", Font.PLAIN, 14));
         password2Label.setHorizontalAlignment(SwingConstants.CENTER);
         JPasswordField password2Field = new JPasswordField();
 
