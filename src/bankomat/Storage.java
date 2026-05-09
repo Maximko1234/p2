@@ -26,12 +26,21 @@ public class Storage {
             System.out.println("Произошла ошибка чтения из файла " + e.getMessage());
         }
 
-        logins.put("admin", "ZZZ");
-        logins.put("user1", "12345");
-        logins.put("grisha", "password");
-    }
+        try {
+            File file = new File("src/bankomat/storage/logins.txt");
+            Scanner scanner = new Scanner(file);
 
-    public void save() {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] parts = line.split(" ");
 
+                String login = parts[0];
+                String password = parts[1];
+
+                logins.put(login, password);
+            }
+        } catch (Exception e) {
+            System.out.println("Произошла ошибка чтения из файла " + e.getMessage());
+        }
     }
 }
