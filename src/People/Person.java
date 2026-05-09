@@ -1,10 +1,13 @@
 package People;
 
+import java.util.List;
+
 public class Person {
 
     public String name;
     public int age;
     public String city;
+    public List<Person> friends;
 
     public Person(String name, int age, String city) {
         this.name = name;
