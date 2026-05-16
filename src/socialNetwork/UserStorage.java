@@ -1,6 +1,7 @@
 package socialNetwork;
 
 import java.io.File;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -28,6 +29,10 @@ public class UserStorage {
 
                 Integer id = Integer.parseInt(data[0]);
                 String firstName = data[1];
+                String lastName = data[2];
+                String userName = data[3];
+                String age = data[4];
+                LocalDate birthday = LocalDate.parse(data[5]);
 
                 Person person = new Person();
                 result.put(id, person);
