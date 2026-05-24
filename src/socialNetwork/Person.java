@@ -3,8 +3,22 @@ package socialNetwork;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Person {
+    @Override
+    public String toString() {
+        return "Person{" +
+                "login='" + login + '\'' +
+                ", id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", birthday=" + birthday +
+                ", city='" + city + '\'' +
+                ", friends=" + friends +
+                '}';
+    }
 
     private static int nextId = 0;
 
@@ -79,5 +93,15 @@ public class Person {
 
     public List<Integer> getFriends() {
         return friends;
+    }
+
+    public String getFrinedsString() {
+        return friends.stream()
+                .map(Object:: toString)
+                .collect(Collectors.joining(","));
+    }
+
+    public void addFriend(int id) {
+        friends.add(id);
     }
 }

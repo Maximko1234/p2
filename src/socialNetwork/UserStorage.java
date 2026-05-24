@@ -21,7 +21,15 @@ public class UserStorage {
     }
 
     private Map<String, String> getLogins() {
+        return null;
+    }
 
+    public void savePerson(Person user) {
+        users.put(user.getId(), user);
+    }
+
+    public List<Person> getPersons() {
+        return users.values().stream().toList();
     }
 
     public void save() {
@@ -32,12 +40,11 @@ public class UserStorage {
                 writer.write(person.getId() + razdel +
                         person.getFirstName() + razdel +
                         person.getLastName() + razdel +
-                        person.getUserName() + razdel +
+                        person.getLogin() + razdel +
                         person.getAge() + razdel +
                         person.getBirthday() + razdel +
-                        person.getFriends() + razdel +
+                        person.getFrinedsString() + razdel +
                         person.getCity() + razdel +
-
                         "\n");
             }
         } catch (IOException e) {
@@ -81,10 +88,14 @@ public class UserStorage {
      * строка вида "1,2,3,4" -> [1, 2, 3, 4]
      */
     private List<Integer> parseId(String ids) {
+        if (ids.isEmpty()) {
+            return new ArrayList<>();
+        }
+
         String[] idString = ids.split(",");
 
         List<Integer> result = new ArrayList<>();
-        for (String element: idString) {
+        for (String element : idString) {
             result.add(Integer.parseInt(element));
         }
 

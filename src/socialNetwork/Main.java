@@ -1,22 +1,16 @@
 package socialNetwork;
 
-import java.time.LocalDate;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Person admin = new Person("admin",
-                "Oleg",
-                "Ivanov",
-                "Rostov",
-                LocalDate.of(2001, 3, 20)
-        );
-        Person user = new Person("user123",
-                "John",
-                "Williams",
-                "New-York",
-                LocalDate.of(2005, 5, 20)
-        );
+        UserStorage storage = new UserStorage();
 
+        List<Person> personList = storage.getPersons();
+        System.out.println("Список всех пользователей:");
+        for (Person p : personList) {
+            System.out.println(p);
+        }
 
     }
 }
