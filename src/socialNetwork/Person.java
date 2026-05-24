@@ -45,4 +45,39 @@ public class Person {
         this.age = LocalDate.now().getYear() - birthday.getYear();
     }
 
+    public static int getNextId() {
+        return nextId;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public List<Integer> getFriends() {
+        return friends;
+    }
 }

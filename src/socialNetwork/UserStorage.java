@@ -1,6 +1,8 @@
 package socialNetwork;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -10,6 +12,9 @@ public class UserStorage {
     private Map<String, String> logins;
     private String razdel = "<s>";
 
+    /*
+     * Создает хранилище пользователей и логинов
+     */
     public UserStorage() {
         this.users = getUsers();
         this.logins = getLogins();
@@ -20,7 +25,15 @@ public class UserStorage {
     }
 
     public void save() {
-
+        System.out.println("Сохранение данных в файл...");
+        try (FileWriter writer = new FileWriter("src/socialNetwork/storage/users.txt")) {
+            for (var elem : users.entrySet()) {
+                Person person = elem.getValue();
+                writer.write(person.getId() + razdel + person.getFirstName() + razdel + "\n");
+            }
+        } catch (IOException e) {
+            System.out.println("Произошла файловая ошибка " + e.getMessage());
+        }
     }
 
     private Map<Integer, Person> getUsers() {
@@ -54,11 +67,16 @@ public class UserStorage {
         }
     }
 
-    private List<Integer> parseId(String ids){
+    /*
+     * Парсит строку с ID в список
+     * строка вида "1,2,3,4" -> [1, 2, 3, 4]
+     */
+    private List<Integer> parseId(String ids) {
         String[] idString = ids.split(",");
+
         List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < idString.length; i++) {
-            result.add(Integer.parseInt(ids));
+        for (String element: idString) {
+            result.add(Integer.parseInt(element));
         }
 
         return result;
