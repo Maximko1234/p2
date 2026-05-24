@@ -32,6 +32,11 @@ public class UserStorage {
                 writer.write(person.getId() + razdel +
                         person.getFirstName() + razdel +
                         person.getLastName() + razdel +
+                        person.getUserName() + razdel +
+                        person.getAge() + razdel +
+                        person.getBirthday() + razdel +
+                        person.getFriends() + razdel +
+                        person.getCity() + razdel +
 
                         "\n");
             }
