@@ -29,7 +29,11 @@ public class UserStorage {
         try (FileWriter writer = new FileWriter("src/socialNetwork/storage/users.txt")) {
             for (var elem : users.entrySet()) {
                 Person person = elem.getValue();
-                writer.write(person.getId() + razdel + person.getFirstName() + razdel + "\n");
+                writer.write(person.getId() + razdel +
+                        person.getFirstName() + razdel +
+                        person.getLastName() + razdel +
+
+                        "\n");
             }
         } catch (IOException e) {
             System.out.println("Произошла файловая ошибка " + e.getMessage());
