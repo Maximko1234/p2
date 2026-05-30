@@ -20,7 +20,7 @@ public class Person {
                 '}';
     }
 
-    private static int nextId = 0;
+    public static int nextId = 0;
 
     private String login;
     private int id; //всегда уникальный
@@ -57,10 +57,6 @@ public class Person {
         nextId += 1;
         this.friends = new ArrayList<>();
         this.age = LocalDate.now().getYear() - birthday.getYear();
-    }
-
-    public static int getNextId() {
-        return nextId;
     }
 
     public String getLogin() {

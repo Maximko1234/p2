@@ -58,6 +58,8 @@ public class UserStorage {
             File file = new File("src/socialNetwork/storage/users.txt");
             Scanner scanner = new Scanner(file);
 
+            int maxId = 0;
+
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] data = line.split(razdel);
@@ -74,7 +76,13 @@ public class UserStorage {
                 Person person =
                         new Person(userName, id, firstName, lastName, age, city, birthday, friends);
                 result.put(id, person);
+
+                if (id > maxId) {
+                    maxId = id;
+                }
             }
+
+            Person.nextId = maxId + 1;
 
             return result;
         } catch (Exception e) {
