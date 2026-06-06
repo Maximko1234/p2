@@ -13,8 +13,8 @@ public class Main {
             System.out.println("""
                     Нажмите кнопку, чтобы:
                     1 - Добавить нового пользователя
-                    2 - Добавить друга
-                    3 - 
+                    2 - Вывод всех пользователей на экран
+                    3 - Добавить друга
                     4 - 
                     5 - выход
                     6 -""");
@@ -40,8 +40,10 @@ public class Main {
                     storage.savePerson(newPerson);
                     System.out.println("Пользователь добавлен.айди пользваотеля: " + newPerson.getId());
             } else if (knopka == 2) {
+                //Печать пользователей в формате  login: firstName lastName живет в city
 
             } else if (knopka == 3) {
+                //введите логин кого хотите добавить
 
             } else if (knopka == 5) {
                 System.out.println("До свидания!");
