@@ -21,28 +21,32 @@ public class Main {
             System.out.print("Введите команду ");
             int knopka = scanner.nextInt();
             if (knopka == 1) {
-                    System.out.print("Введите логин: ");
-                    String login = scanner.next();
-                    System.out.print("Введите имя: ");
-                    String firstName = scanner.next();
-                    System.out.print("Введите фамилию: ");
-                    String lastName = scanner.next();
-                    System.out.print("Введите город: ");
-                    String city = scanner.next();
-                    System.out.print("Введите дату рождения введите год ");
-                    int year = scanner.nextInt();
-                    System.out.print("Введите дату рождения введите месяц ");
-                    int month = scanner.nextInt();
-                    System.out.print("Введите дату рождения введите день ");
-                    int day = scanner.nextInt();
+                System.out.print("Введите логин: ");
+                String login = scanner.next();
+                System.out.print("Введите имя: ");
+                String firstName = scanner.next();
+                System.out.print("Введите фамилию: ");
+                String lastName = scanner.next();
+                System.out.print("Введите город: ");
+                String city = scanner.next();
+                System.out.print("Введите дату рождения введите год ");
+                int year = scanner.nextInt();
+                System.out.print("Введите дату рождения введите месяц ");
+                int month = scanner.nextInt();
+                System.out.print("Введите дату рождения введите день ");
+                int day = scanner.nextInt();
 
-                    Person newPerson = new Person(login, firstName, lastName, city, LocalDate.of(year, month , day));
-                    storage.savePerson(newPerson);
-                    System.out.println("Пользователь добавлен.айди пользваотеля: " + newPerson.getId());
+                Person newPerson = new Person(login, firstName, lastName, city, LocalDate.of(year, month , day));
+                storage.savePerson(newPerson);
+                System.out.println("Пользователь добавлен.айди пользваотеля: " + newPerson.getId());
             } else if (knopka == 2) {
-                //Печать пользователей в формате  login: firstName lastName живет в city
-                List<Person> persionList = storage.getPersons();
-                //цикл по списку
+                List<Person> personlist = storage.getPersons();
+                for (Person person : personlist) {
+                    System.out.println(person.getLogin() +
+                            ": " + person.getFirstName() + " " +
+                            person.getLastName() + " город " +
+                            person.getCity());
+                }
             } else if (knopka == 3) {
                 //введите логин кого хотите добавить
 
@@ -50,7 +54,7 @@ public class Main {
                 System.out.println("До свидания!");
                 break;
             }
-    }
+        }
 
         storage.save();
     }
