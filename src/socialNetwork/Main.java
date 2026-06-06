@@ -41,7 +41,8 @@ public class Main {
                     System.out.println("Пользователь добавлен.айди пользваотеля: " + newPerson.getId());
             } else if (knopka == 2) {
                 //Печать пользователей в формате  login: firstName lastName живет в city
-
+                List<Person> persionList = storage.getPersons();
+                //цикл по списку
             } else if (knopka == 3) {
                 //введите логин кого хотите добавить
 
