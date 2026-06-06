@@ -1,4 +1,4 @@
-0<s>Oleg<s>Ivanov<s>admin<s>25<s>2001-03-20<s><s>Rostov<s>
+0<s>Пётр<s>Смирнов<s>user228<s>23<s>2003-02-12<s><s>Samara<s>
 1<s>John<s>Williams<s>user123<s>21<s>2005-05-20<s>0<s>New-York<s>
 2<s>name<s>lastname<s>login<s>26<s>2000-03-02<s><s>email<s>
 3<s>name<s>lastname<s>login<s>26<s>2000-03-02<s><s>email<s>

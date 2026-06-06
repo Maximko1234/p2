@@ -97,7 +97,8 @@ public class Person {
                 .collect(Collectors.joining(","));
     }
 
-    public void addFriend(int id) {
-        friends.add(id);
+    public void addFriend(Person person) {
+        friends.add(person.getId());
     }
+
 }
