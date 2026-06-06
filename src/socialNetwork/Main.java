@@ -29,14 +29,16 @@ public class Main {
                     String lastName = scanner.next();
                     System.out.print("Введите город: ");
                     String city = scanner.next();
-                    System.out.print("Введите дату рождения(год.месяц.число) ");
-                    String birthday = scanner.next();
+                    System.out.print("Введите дату рождения введите год ");
+                    int year = scanner.nextInt();
+                    System.out.print("Введите дату рождения введите месяц ");
+                    int month = scanner.nextInt();
+                    System.out.print("Введите дату рождения введите день ");
+                    int day = scanner.nextInt();
 
-                    Person newPerson = new Person(login, firstName, lastName, city, birthday);
+                    Person newPerson = new Person(login, firstName, lastName, city, LocalDate.of(year, month , day));
                     storage.savePerson(newPerson);
                     System.out.println("Пользователь добавлен.айди пользваотеля: " + newPerson.getId());
-
-
             } else if (knopka == 2) {
 
             } else if (knopka == 3) {
