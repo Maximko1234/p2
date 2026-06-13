@@ -53,7 +53,24 @@ public class Main {
             } else if (knopka == 5) {
                 System.out.println("До свидания!");
                 break;
+            } else if (knopka == 6) {
+                System.out.print("Введите имя пользователя: ");
+                Person person = findUser(scanner.next(), storage);
+                if (person != null) {
+                    for (Integer friendId : person.getFriends()) {
+                        for (Person p : storage.getPersons()) {
+                            if (p.getId() == friendId) {
+                                System.out.println(p.getFirstName() + " " + p.getLastName());
+                            }
+                        }
+                    }
+                } else {
+                    System.out.println("Пользователь не найден");
+
+                }
+
             }
+
         }
 
         storage.save();
@@ -88,7 +105,7 @@ public class Main {
                     3 - Добавить друга
                     4 - Найти пользователя
                     5 - выход
-                    6 -""");
+                    6 - вывести друзей пользователя""");
         System.out.print("Введите команду ");
     }
 
