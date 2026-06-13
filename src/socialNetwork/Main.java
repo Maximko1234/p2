@@ -23,6 +23,7 @@ public class Main {
                 String searchName = scanner.next();
                 List<Person> personlist = storage.getPersons();
 
+                boolean foundUser=false;
                 for (Person person : personlist) {
                     if (person.getFirstName().equals(searchName)) {
                         System.out.println("Данные пользователя : логин : " +
@@ -30,20 +31,14 @@ public class Main {
                                 person.getFirstName() + " , фамилия:  " +
                                 person.getLastName() + ", город : " +
                                 person.getCity());
+
+                        foundUser = true;
                     }
-                    else
-                        System.out.println("пользователь не найден");
                 }
 
-
-                //найти человека по введенному имени
-
-                /*
-                 * Шаг 1. попросить ввести имя
-                 * Шаг 2. Перебрать список людей и найти совпадение с именем
-                 * Шаг 3 вывести информацию о человеке
-                 */
-
+                if (!foundUser){
+                    System.out.println("пользователь не найден");
+                }
             } else if (knopka == 5) {
                 System.out.println("До свидания!");
                 break;
