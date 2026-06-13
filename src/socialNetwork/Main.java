@@ -17,9 +17,25 @@ public class Main {
             } else if (knopka == 2) {
                printUsers(storage);
             } else if (knopka == 3) {
-                //введите логин кого хотите добавить
 
             } else if (knopka == 4) {
+                System.out.print("Введите имя пользователя ");
+                String searchName = scanner.next();
+                List<Person> personlist = storage.getPersons();
+
+                for (Person person : personlist) {
+                    if (person.getFirstName().equals(searchName)) {
+                        System.out.println("Данные пользователя : логин : " +
+                                person.getLogin() + ", имя : " +
+                                person.getFirstName() + " , фамилия:  " +
+                                person.getLastName() + ", город : " +
+                                person.getCity());
+                    }
+                    else
+                        System.out.println("пользователь не найден");
+                }
+
+
                 //найти человека по введенному имени
 
                 /*
@@ -53,7 +69,7 @@ public class Main {
                     1 - Добавить нового пользователя
                     2 - Вывод всех пользователей на экран
                     3 - Добавить друга
-                    4 - 
+                    4 - Найти пользователя
                     5 - выход
                     6 -""");
         System.out.print("Введите команду ");
