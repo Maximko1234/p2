@@ -17,7 +17,18 @@ public class Main {
             } else if (knopka == 2) {
                printUsers(storage);
             } else if (knopka == 3) {
+                System.out.print("Введите имя 1 пользователя ");
+                String searchName = scanner.next();
+               Person person = findUser(searchName, storage);
 
+                System.out.print("Введите имя 2 пользователя ");
+                String searchName2 = scanner.next();
+                Person person2 = findUser(searchName2, storage);
+
+                if (person2 != null && person != null) {
+                    person.addFriend(person2);
+                    person2.addFriend(person);
+                }
             } else if (knopka == 4) {
                 System.out.print("Введите имя пользователя ");
                 String searchName = scanner.next();
@@ -46,6 +57,17 @@ public class Main {
         }
 
         storage.save();
+    }
+
+    static Person findUser(String searchName, UserStorage storage) {
+        List<Person> personlist = storage.getPersons();
+        for (Person person : personlist) {
+            if (person.getFirstName().equals(searchName)) {
+                return  person;
+            }
+        }
+
+        return null;
     }
 
     static void printUsers(UserStorage storage) {
