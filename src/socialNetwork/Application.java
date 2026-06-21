@@ -79,8 +79,8 @@ public class Application {
         loginButton.addActionListener(e -> {
             login = loginField.getText();
             String password = new String(passwordFieled.getPassword());
-            if (storage.logins.containsKey(login)) {
-                String truePassword = storage.logins.get(login);
+            if (storage.getLogins().containsKey(login)) {
+                String truePassword = storage.getLogins().get(login);
                 if (password.equals(truePassword)) {
                     JOptionPane.showMessageDialog(frame, "Добро пожаловать, " + login);
                     //showMainMenu(); //TODO реализовать главное меню

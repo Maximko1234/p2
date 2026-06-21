@@ -17,11 +17,30 @@ public class UserStorage {
      */
     public UserStorage() {
         this.users = getUsers();
-        this.logins = getLogins();
+        this.logins = getLoginsFromFile();
     }
 
-    private Map<String, String> getLogins() {
-        return null;
+    private Map<String, String> getLoginsFromFile() {
+        try {
+            Map<String, String> result = new HashMap<>();
+            File file = new File("src/socialNetwork/storage/logins.txt");
+            Scanner scanner = new Scanner(file);
+
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] data = line.split(razdel);
+
+                String login = data[0];
+                String password = data[1];
+
+                result.put(login,password);
+            }
+
+            return result;
+        } catch (Exception e) {
+            System.out.println("Произошла ошибка чтения из файла " + e.getMessage());
+            return null;
+        }
     }
 
     public void savePerson(Person user) {
@@ -30,6 +49,10 @@ public class UserStorage {
 
     public List<Person> getPersons() {
         return users.values().stream().toList();
+    }
+
+    public Map<String, String> getLogins() {
+        return logins;
     }
 
     public void save() {
