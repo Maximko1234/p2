@@ -66,7 +66,6 @@ public class Main {
                     }
                 } else {
                     System.out.println("Пользователь не найден");
-
                 }
 
             }
