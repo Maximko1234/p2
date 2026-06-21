@@ -47,6 +47,10 @@ public class UserStorage {
         users.put(user.getId(), user);
     }
 
+    public void saveLogin(String login, String password){
+
+    }
+
     public List<Person> getPersons() {
         return users.values().stream().toList();
     }
@@ -73,6 +77,8 @@ public class UserStorage {
         } catch (IOException e) {
             System.out.println("Произошла файловая ошибка " + e.getMessage());
         }
+
+        //TODO: сохранять пароли
     }
 
     private Map<Integer, Person> getUsers() {
