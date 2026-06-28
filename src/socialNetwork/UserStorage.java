@@ -33,7 +33,7 @@ public class UserStorage {
                 String login = data[0];
                 String password = data[1];
 
-                result.put(login,password);
+                result.put(login, password);
             }
 
             return result;
@@ -47,7 +47,7 @@ public class UserStorage {
         users.put(user.getId(), user);
     }
 
-    public void saveLogin(String login, String password){
+    public void saveLogin(String login, String password) {
 
     }
 
@@ -79,6 +79,14 @@ public class UserStorage {
         }
 
         //TODO: сохранять пароли
+        try (FileWriter writer = new FileWriter("src/socialNetwork/storage/logins.txt")) {
+            for (var elem : logins.entrySet()) {
+                elem.getValue() - пароль
+                elem.getKey() - логин
+            }
+        } catch (IOException e) {
+            System.out.println("Произошла файловая ошибка " + e.getMessage());
+        }
     }
 
     private Map<Integer, Person> getUsers() {
