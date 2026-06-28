@@ -48,7 +48,7 @@ public class UserStorage {
     }
 
     public void saveLogin(String login, String password) {
-
+        logins.put(login, password);
     }
 
     public List<Person> getPersons() {
@@ -78,11 +78,9 @@ public class UserStorage {
             System.out.println("Произошла файловая ошибка " + e.getMessage());
         }
 
-        //TODO: сохранять пароли
         try (FileWriter writer = new FileWriter("src/socialNetwork/storage/logins.txt")) {
             for (var elem : logins.entrySet()) {
-                elem.getValue() - пароль
-                elem.getKey() - логин
+                writer.write(elem.getKey() + razdel + elem.getValue() + "\n");
             }
         } catch (IOException e) {
             System.out.println("Произошла файловая ошибка " + e.getMessage());
