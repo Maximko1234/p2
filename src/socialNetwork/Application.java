@@ -1,5 +1,8 @@
 package socialNetwork;
 
+import socialNetwork.services.MainMenuService;
+import socialNetwork.services.RegistrationService;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -16,6 +19,10 @@ public class Application {
     private UserStorage storage = new UserStorage();
     //логин авторизованного пользователя
     private String login;
+
+    //сервис меню
+    MainMenuService mainMenuService = new MainMenuService();
+    RegistrationService regService = new RegistrationService();
 
     public static void main(String[] args) {
         new Application().showLogin();
@@ -58,7 +65,7 @@ public class Application {
 
         JButton registrationButton = new JButton("Регистрация");
         registrationButton.setFont(new Font("Arial", Font.BOLD, 16));
-        registrationButton.addActionListener(e -> showRegistrationScreen());
+        registrationButton.addActionListener(e -> regService.showRegistrationScreen(storage));
 
         frame.add(loginLabel);
         frame.add(loginField);
@@ -69,9 +76,6 @@ public class Application {
         frame.setVisible(true);
     }
 
-    private void showRegistrationScreen() {
-        // TODO: реализовать окно регистрации
-    }
 
     private JButton getjButton(JTextField loginField, JPasswordField passwordFieled) {
         JButton loginButton = new JButton("Войти");
@@ -83,7 +87,7 @@ public class Application {
                 String truePassword = storage.getLogins().get(login);
                 if (password.equals(truePassword)) {
                     JOptionPane.showMessageDialog(frame, "Добро пожаловать, " + login);
-                    showMainMenu();
+                    mainMenuService.showMainMenu(login, frame);
                 } else {
                     JOptionPane.showMessageDialog(frame, "Неверный пароль!", "Ошибка", ERROR_MESSAGE);
                 }
@@ -94,42 +98,4 @@ public class Application {
         return loginButton;
     }
 
-
-    private void showMainMenu() {
-
-        frame.setVisible(false);
-
-        JFrame mainFrame = new JFrame("Главное меню");
-        mainFrame.setSize(400, 300);
-        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainFrame.setLayout(new GridLayout(5, 1, 10, 10));
-
-        JLabel welcomeLabel = new JLabel("Добро пожаловать, " +login + "!");
-        welcomeLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
-
-        JButton friendsButton = new JButton("Мои друзья");
-        friendsButton.setFont(new Font("Arial", Font.BOLD, 16));
-
-        JButton findUserButton = new JButton("Найти пользователя");
-        findUserButton.setFont(new Font("Arial", Font.BOLD, 16));
-
-        JButton allUsersButton = new JButton("Все пользователи");
-        allUsersButton.setFont(new Font("Arial", Font.BOLD, 16));
-
-        JButton exitButton = new JButton("Выйти");
-        exitButton.setFont(new Font("Arial", Font.BOLD, 16));
-        exitButton.addActionListener(e -> {
-
-            System.exit(0);
-    });
-
-        mainFrame.add(welcomeLabel);
-        mainFrame.add(friendsButton);
-        mainFrame.add(findUserButton);
-        mainFrame.add(allUsersButton);
-        mainFrame.add(exitButton);
-
-        mainFrame.setVisible(true);
-    }
 }

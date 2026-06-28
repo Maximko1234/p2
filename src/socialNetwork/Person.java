@@ -91,6 +91,22 @@ public class Person {
         return friends;
     }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public String getFrinedsString() {
         return friends.stream()
                 .map(Object:: toString)
