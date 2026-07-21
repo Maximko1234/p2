@@ -37,6 +37,11 @@ public class ProfileService {
         birthdayLabel.setHorizontalAlignment(SwingConstants.CENTER);
         birthdayLabel.setFont(new Font("Arial", Font.BOLD, 16));
 
+        JLabel CityLabel = new JLabel("город:");
+        CityLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        CityLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        JTextField CityField = new JTextField(currentUser.getCity());
+
         JPanel birthdayPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JTextField birthdayField = new JTextField(10);
         if (currentUser.getBirthday() != null) {
@@ -113,6 +118,7 @@ public class ProfileService {
             user.setLastName(lastName);
             user.setFirstName(firstName);
             user.setBirthday(birthday);
+            user.setCity(City);
 
             // Обновляем возраст, если изменилась дата рождения
             if (birthday != null) {
@@ -141,6 +147,8 @@ public class ProfileService {
         profileFrame.add(buttonPanel);
         profileFrame.add(new JLabel());
         profileFrame.add(message);
+        profileFrame.add(CityLabel);
+        profileFrame.add(CityField);
 
         profileFrame.pack();
         profileFrame.setLocationRelativeTo(null);
@@ -172,6 +180,11 @@ public class ProfileService {
         JLabel birthdayLabel = new JLabel("Дата рождения:");
         birthdayLabel.setHorizontalAlignment(SwingConstants.CENTER);
         birthdayLabel.setFont(new Font("Arial", Font.BOLD, 16));
+
+        JLabel CityLabel = new JLabel("Имя:");
+        CityLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        JTextField CityField = new JTextField(user.getCity());
+
 
         JPanel birthdayPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JTextField birthdayField = new JTextField(10);
@@ -227,6 +240,7 @@ public class ProfileService {
             String finalLastName = lastNameField.getText().trim();
             String finalFirstName = firstNameField.getText().trim();
             String birthdayStr = birthdayField.getText().trim();
+            String City = CityField.getText().trim();
 
             if (finalLastName.isEmpty() || finalFirstName.isEmpty()) {
                 message.setText("Заполните Фамилию и Имя!");
@@ -271,6 +285,8 @@ public class ProfileService {
         profileFrame.add(firstNameField);
         profileFrame.add(birthdayLabel);
         profileFrame.add(birthdayPanel);
+        profileFrame.add(CityLabel);
+        profileFrame.add(CityField);
         profileFrame.add(new JLabel());
         profileFrame.add(buttonPanel);
         profileFrame.add(new JLabel());
