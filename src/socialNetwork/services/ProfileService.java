@@ -149,8 +149,9 @@ public class ProfileService {
         return this.user;
     }
 
-    public Person showRegistrationProfileScreen(UserStorage storage, String login, String firstName, String lastName, LocalDate birthday) {
-        this.user = new Person(login, firstName, lastName, "", birthday);
+    public Person showRegistrationProfileScreen(UserStorage storage, Person user) {
+        this.user = user;
+        System.out.println("[ProfileService] Заполнение профиля");
         storage.savePerson(this.user);
 
         JFrame profileFrame = new JFrame("Заполните данные профиля");
@@ -161,12 +162,12 @@ public class ProfileService {
         JLabel lastNameLabel = new JLabel("Фамилия:");
         lastNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
         lastNameLabel.setFont(new Font("Arial", Font.BOLD, 16));
-        JTextField lastNameField = new JTextField(lastName);
+        JTextField lastNameField = new JTextField(user.getLastName());
 
         JLabel firstNameLabel = new JLabel("Имя:");
         firstNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
         firstNameLabel.setFont(new Font("Arial", Font.BOLD, 16));
-        JTextField firstNameField = new JTextField(firstName);
+        JTextField firstNameField = new JTextField(user.getFirstName());
 
         JLabel birthdayLabel = new JLabel("Дата рождения:");
         birthdayLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -174,8 +175,8 @@ public class ProfileService {
 
         JPanel birthdayPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JTextField birthdayField = new JTextField(10);
-        if (birthday != null) {
-            birthdayField.setText(birthday.toString());
+        if (user.getBirthday() != null) {
+            birthdayField.setText(user.getBirthday().toString());
         }
 
         JButton calendarButton = new JButton("📅");
@@ -190,9 +191,9 @@ public class ProfileService {
             JSpinner.DateEditor editor = new JSpinner.DateEditor(spinner, "yyyy-MM-dd");
             spinner.setEditor(editor);
 
-            if (birthday != null) {
+            if (user.getBirthday() != null) {
                 Calendar cal = Calendar.getInstance();
-                cal.setTime(Date.from(birthday.atStartOfDay().toInstant(java.time.ZoneOffset.UTC)));
+                cal.setTime(Date.from(user.getBirthday().atStartOfDay().toInstant(java.time.ZoneOffset.UTC)));
                 spinner.setValue(cal.getTime());
             }
 

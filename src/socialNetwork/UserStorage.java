@@ -38,7 +38,7 @@ public class UserStorage {
 
             return result;
         } catch (Exception e) {
-            System.out.println("Произошла ошибка чтения из файла " + e.getMessage());
+            System.out.println("Произошла ошибка чтения логинов из файла " + e.getMessage());
             return null;
         }
     }
@@ -121,7 +121,7 @@ public class UserStorage {
 
             return result;
         } catch (Exception e) {
-            System.out.println("Произошла ошибка чтения из файла " + e.getMessage());
+            System.out.println("Произошла ошибка чтения пользователей из файла " + e.getMessage());
             return null;
         }
     }

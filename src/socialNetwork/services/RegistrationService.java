@@ -13,6 +13,7 @@ public class RegistrationService {
     private ProfileService profileService = new ProfileService();
 
     public String showRegistrationScreen(UserStorage storage) {
+        System.out.println("[RegistrationService] Открыто окно регистрации");
         JFrame regFrame = new JFrame("Регистрация нового пользователя");
         regFrame.setSize(400, 250);
         regFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,6 +60,7 @@ public class RegistrationService {
                 return;
             }
 
+            System.out.println("[RegistrationService] Пользователь зарегистрирован! " + login);
             storage.saveLogin(login, pass1);
 
             // Создаем нового пользователя
@@ -68,7 +70,7 @@ public class RegistrationService {
 
             JOptionPane.showMessageDialog(regFrame, "Регистрация успешна! Ваш логин: " + login);
             regFrame.dispose();
-            profileService.showRegistrationProfileScreen(storage, login, "", "", LocalDate.of(2000,1,1));
+            profileService.showRegistrationProfileScreen(storage, newUser);
         });
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.add(registrationButton);
