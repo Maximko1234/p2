@@ -182,7 +182,7 @@ public class ProfileService {
         birthdayLabel.setHorizontalAlignment(SwingConstants.CENTER);
         birthdayLabel.setFont(new Font("Arial", Font.BOLD, 16));
 
-        JLabel CityLabel = new JLabel("Имя:");
+        JLabel CityLabel = new JLabel("город:");
         CityLabel.setFont(new Font("Arial", Font.BOLD, 16));
         JTextField CityField = new JTextField(user.getCity());
 
