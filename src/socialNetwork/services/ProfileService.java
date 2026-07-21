@@ -184,6 +184,7 @@ public class ProfileService {
 
         JLabel CityLabel = new JLabel("город:");
         CityLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        CityLabel.setHorizontalAlignment(SwingConstants.CENTER);
         JTextField CityField = new JTextField(user.getCity());
 
 
