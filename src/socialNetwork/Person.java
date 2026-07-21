@@ -107,6 +107,10 @@ public class Person {
         this.age = age;
     }
 
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     public String getFrinedsString() {
         return friends.stream()
                 .map(Object:: toString)
