@@ -36,7 +36,7 @@ public class MyProfileService {
         drLabel.setFont(new Font("Arial", Font.BOLD, 16));
         drLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        JLabel drValueLabel = new JLabel(person.getBirthday());
+        JLabel drValueLabel = new JLabel(String.valueOf(person.getBirthday()));
         drValueLabel.setFont(new Font("Arial", Font.BOLD, 16));
         drValueLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
