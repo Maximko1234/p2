@@ -13,25 +13,30 @@ public class MyProfileService {
         UserStorage storage = new UserStorage();
         List<Person> users = storage.getPersons();
         Person person = null;
+        for(Person user : users){
+            if(user.getLogin().equals(login)){
+                person = user;
+            }
+        }
 
         JFrame mainFrame = new JFrame("Личная страница");
         mainFrame.setSize(800, 600);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setLayout(new GridLayout(5, 2, 5, 5));
 
-        JLabel nameLabel = new JLabel("???");
+        JLabel nameLabel = new JLabel(person.getFirstName());
         nameLabel.setFont(new Font("Arial", Font.BOLD, 16));
         nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        JLabel lastNameLabel = new JLabel("???");
+        JLabel lastNameLabel = new JLabel(person.getLastName());
         lastNameLabel.setFont(new Font("Arial", Font.BOLD, 16));
         lastNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        JLabel drLabel = new JLabel("День рождения:");
+        JLabel drLabel = new JLabel("день рождение:");
         drLabel.setFont(new Font("Arial", Font.BOLD, 16));
         drLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        JLabel drValueLabel = new JLabel("???");
+        JLabel drValueLabel = new JLabel(person.getBirthday());
         drValueLabel.setFont(new Font("Arial", Font.BOLD, 16));
         drValueLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -39,7 +44,7 @@ public class MyProfileService {
         cityLabel.setFont(new Font("Arial", Font.BOLD, 16));
         cityLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        JLabel cityValueLabel = new JLabel("???");
+        JLabel cityValueLabel = new JLabel(person.getCity());
         cityValueLabel.setFont(new Font("Arial", Font.BOLD, 16));
         cityValueLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -47,7 +52,7 @@ public class MyProfileService {
         friendsLabel.setFont(new Font("Arial", Font.BOLD, 16));
         friendsLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        JLabel friendsValueLabel = new JLabel("???");
+        JLabel friendsValueLabel = new JLabel(person.getFriends());
         friendsValueLabel.setFont(new Font("Arial", Font.BOLD, 16));
         friendsValueLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
