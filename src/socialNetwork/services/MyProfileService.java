@@ -1,14 +1,18 @@
 package socialNetwork.services;
 
+import socialNetwork.Person;
 import socialNetwork.UserStorage;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class MyProfileService {
 
     public void showProfile(String login) {
         UserStorage storage = new UserStorage();
+        List<Person> users = storage.getPersons();
+        Person person = null;
 
         JFrame mainFrame = new JFrame("Личная страница");
         mainFrame.setSize(800, 600);
