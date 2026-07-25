@@ -52,12 +52,22 @@ public class MyProfileService {
         friendsLabel.setFont(new Font("Arial", Font.BOLD, 16));
         friendsLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        JLabel friendsValueLabel = new JLabel(person.getFriends());
+        JLabel friendsValueLabel = new JLabel(String.valueOf(person.getFriends().size()));
         friendsValueLabel.setFont(new Font("Arial", Font.BOLD, 16));
         friendsValueLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
+
         mainFrame.add(nameLabel);
+        mainFrame.add(nameValueLabel);
         mainFrame.add(lastNameLabel);
+        mainFrame.add(lastNameValueLabel);
+        mainFrame.add(cityLabel);
+        mainFrame.add(cityValueLabel);
+        mainFrame.add(drLabel);
+        mainFrame.add(drValueLabel);
+        mainFrame.add(friendsLabel);
+        mainFrame.add(friendsValueLabel);
+
 
         mainFrame.setVisible(true);
     }
