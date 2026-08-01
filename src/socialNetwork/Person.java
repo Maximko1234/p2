@@ -121,4 +121,8 @@ public class Person {
         friends.add(person.getId());
     }
 
+    public void deleteFriend(Person person) {
+        friends.remove(Integer.valueOf(person.getId()));
+    }
+
 }

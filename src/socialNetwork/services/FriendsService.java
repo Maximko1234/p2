@@ -28,16 +28,13 @@ public class FriendsService {
             for (Integer id : friendsId) {
                 if (user.getId() == id) {
                     friends.add(user);
-
                 }
             }
         }
-        //цикл по всем пользователям, где нужных людей добавляем в friends
 
         JFrame mainFrame = new JFrame("Друзья");
         mainFrame.setSize(800, 600);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainFrame.setLayout(new GridLayout(5, 2, 5, 5));
 
         // Главный панель
         JPanel mainPanel = new JPanel();
@@ -104,33 +101,16 @@ public class FriendsService {
 
         // Кнопка "Убрать из друзей"
         JButton friendButton;
-        if (currentUser != null && currentUser.getFriends().contains(user.getId())) {
-            // Уже в друзьях
-            friendButton = new JButton("✓ В друзьях");
+        friendButton = new JButton("Убрать из друзей");
+        final Person targetUser = user;
+        friendButton.addActionListener(e -> {
+            currentUser.deleteFriend(targetUser);
+            storage.save();
+            // Обновляем кнопку на этой строке
+            friendButton.setText("удален из друзей");
             friendButton.setEnabled(false);
-            friendButton.setBackground(new Color(220, 250, 220));
-            friendButton.setFocusPainted(false);
-        } else {
-            // Можно добавить в друзья (и user не сам currentUser)
-            if (currentUser != null && currentUser.getId() != user.getId()) {
-                friendButton = new JButton("Добавить в друзья");
-                final Person targetUser = user;
-                friendButton.addActionListener(e -> {
-                    currentUser.addFriend(targetUser);
-                    storage.save();
-                    // Обновляем кнопку на этой строке
-                    friendButton.setText("✓ В друзьях");
-                    friendButton.setEnabled(false);
-                    friendButton.setBackground(new Color(220, 250, 220));
-                });
-            } else {
-                // Это сам текущий пользователь
-                friendButton = new JButton("Вы");
-                friendButton.setEnabled(false);
-                friendButton.setBackground(new Color(240, 240, 240));
-                friendButton.setFocusPainted(false);
-            }
-        }
+            friendButton.setBackground(Color.RED);
+        });
 
         friendButton.setFocusPainted(false);
         friendButton.setFont(new Font("Segoe UI", Font.PLAIN, 13));

@@ -19,6 +19,10 @@ public class MainMenuService {
 
         JButton friendsButton = new JButton("Мои друзья");
         friendsButton.setFont(new Font("Arial", Font.BOLD, 16));
+        friendsButton.addActionListener(e -> {
+            FriendsService friendsService = new FriendsService();
+            friendsService.showProfile(login);
+        });
 
         JButton findUserButton = new JButton("Найти пользователя");
         findUserButton.setFont(new Font("Arial", Font.BOLD, 16));
