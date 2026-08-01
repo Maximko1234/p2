@@ -24,9 +24,17 @@ public class FriendsService {
         //TODO выбрать из пользователей друзей
         List<Person> friends = new ArrayList<>();
         List<Integer> friendsId = person.getFriends();
+        for (Person user : users) {
+            for (Integer id : friendsId) {
+                if (user.getId() == id) {
+                    friends.add(user);
+
+                }
+            }
+        }
         //цикл по всем пользователям, где нужных людей добавляем в friends
 
-        JFrame mainFrame = new JFrame("Личная страница"); //TODO поменять название
+        JFrame mainFrame = new JFrame("Друзья");
         mainFrame.setSize(800, 600);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setLayout(new GridLayout(5, 2, 5, 5));
@@ -37,7 +45,7 @@ public class FriendsService {
         mainPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
         // Заголовок
-        JLabel titleLabel = new JLabel("Все пользователи"); //TODO поменять заголовок
+        JLabel titleLabel = new JLabel("Все друзья");
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         mainPanel.add(titleLabel, BorderLayout.NORTH);
