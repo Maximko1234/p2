@@ -22,6 +22,10 @@ public class MainMenuService {
 
         JButton findUserButton = new JButton("Найти пользователя");
         findUserButton.setFont(new Font("Arial", Font.BOLD, 16));
+        findUserButton.addActionListener(e -> {
+            SearchPersonService searchPersonService = new SearchPersonService();
+            searchPersonService.showPersons(login);
+        });
 
         JButton profileButton = new JButton("Моя страница");
         profileButton.setFont(new Font("Arial", Font.BOLD, 16));

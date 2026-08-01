@@ -32,7 +32,7 @@ public class MyProfileService {
         lastNameLabel.setFont(new Font("Arial", Font.BOLD, 16));
         lastNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        JLabel drLabel = new JLabel("день рождение:");
+        JLabel drLabel = new JLabel("день рождения:");
         drLabel.setFont(new Font("Arial", Font.BOLD, 16));
         drLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -58,9 +58,7 @@ public class MyProfileService {
 
 
         mainFrame.add(nameLabel);
-        mainFrame.add(nameValueLabel);
         mainFrame.add(lastNameLabel);
-        mainFrame.add(lastNameValueLabel);
         mainFrame.add(cityLabel);
         mainFrame.add(cityValueLabel);
         mainFrame.add(drLabel);
